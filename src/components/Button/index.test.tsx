@@ -1,8 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
-import { Button } from ".";
 import userEvent from "@testing-library/user-event";
+
+import { Button } from ".";
 
 describe("Button Component", ()=>{
   test("Should render children prop when load", async () => {

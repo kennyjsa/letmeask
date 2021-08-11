@@ -10,8 +10,8 @@ export function RoomTitle({title, questionCount}:RoomTitleProps){
     <div className="room-title">
       <h1>{title}</h1>
       
-      <span>{questionCount > 0 && <span className="counter">{questionCount} pergunta(s)</span>}</span>
+      <span>{questionCount > 0 && <span className="counter" role="status">{questionCount} pergunta(s)</span>}</span>
     </div>
-    )
+  )
 
 }
