@@ -1,4 +1,6 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast'
+
 import { AuthContextProvider } from './contexts/AuthContext'
 
 import { Home } from "./pages/Home"
@@ -9,6 +11,10 @@ import { AdminRoom } from './pages/AdminRoom';
 function App() {
   return (
     <BrowserRouter>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      />
       <AuthContextProvider>
         <Switch>
           <Route path="/" exact component={Home} />

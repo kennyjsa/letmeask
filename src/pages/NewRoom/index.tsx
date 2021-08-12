@@ -8,25 +8,25 @@ import { database } from '../../services/firebase'
 import illustrationImg from '../../assets/images/illustration.svg'
 import logoImg from '../../assets/images/logo.svg'
 
-import './style.scss'
+import './style.scss';
 
-export function NewRoom() {
+export const NewRoom:React.FC = () => {
   const { user } = useAuth()
   const [newRoom, setNewRoom] = useState('')
   const history = useHistory()
 
-  async function handleCreateRoom(event: FormEvent) {
+  async function handleCreateRoom (event: FormEvent) {
     event.preventDefault()
 
     if (newRoom.trim() === '') {
-      return;
+      return
     }
 
     const roomRef = database.ref('rooms')
 
     const firebaseRoom = await roomRef.push({
       title: newRoom,
-      authorId: user?.id,
+      authorId: user?.id
     })
 
     history.push(`/admin/rooms/${firebaseRoom.key}`)
@@ -56,7 +56,7 @@ export function NewRoom() {
             <Button type="submit">Criar sala</Button>
           </form>
           <p>
-            Quer entrar em uma sala já existente?{" "}
+            Quer entrar em uma sala já existente?{' '}
             <Link to="/">clique aqui</Link>
           </p>
         </div>
