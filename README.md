@@ -24,6 +24,24 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [TypeScript](https://www.typescriptlang.org/)
 - [Firebase](https://firebase.google.com/)
 
+## Recursos extras
+
+Foram implementados algumas funcionalidades extras e melhorias visuais no projeto, com o objetivo de melhorar a usabilidade. Lista das implementações extras:
+
+ - [x] Incluir o ESlint e Prettier no projeto, para garantir uma padronização do código
+ - [x] Toasts de avisos com [react-hot-toast](https://react-hot-toast.com/)
+ - [] Modal para confirm com [react-modal](http://reactcommunity.org/react-modal/)
+ - [] Recurso de ordenação de perguntas
+ - [] Tela inicial com a lista de salas
+ - 
+
+
+ 
+
+
+
+
+
 ## 🚀 Como executar
 
 Clone o projeto e acesse a pasta do mesmo.
