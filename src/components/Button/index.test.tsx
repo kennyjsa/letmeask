@@ -17,7 +17,7 @@ describe("Button Component", ()=>{
   });
   
 
-  test("deve disparar o evento de click", async () => {
+  test("Should execute click event", async () => {
     const onClick = jest.fn();
     
     render(
