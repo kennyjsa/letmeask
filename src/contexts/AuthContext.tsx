@@ -1,5 +1,7 @@
 import { createContext, ReactNode, useEffect, useState } from "react"
-import { firebase, auth } from '../services/firebase'
+import toast from "react-hot-toast"
+import { auth } from "../services/firebase"
+import { firebaseAuthSignInWithGoogle } from "../services/firebaseAuthSignInWithGoogle"
 
 
 type User = {
@@ -28,7 +30,8 @@ export function AuthContextProvider(props: AuthContextProviderProps){
         const { displayName, photoURL, uid } = user
 
         if (!displayName || !photoURL) {
-          throw new Error('Missing information from Google Account')
+          toast.error('Missing information from Google Account')
+          return
         }
 
         setUser({
@@ -45,21 +48,25 @@ export function AuthContextProvider(props: AuthContextProviderProps){
   }, [])
 
   async function signInWithGoogle() {
-    const provider = new firebase.auth.GoogleAuthProvider();
+    
+    const result = await firebaseAuthSignInWithGoogle();
 
-    const result = await auth.signInWithPopup(provider);
+    if (!result) {
+      toast.error("The user is not logged in")
+      return
+    }
 
-    if (result.user) {
-      const { displayName, photoURL, uid } = result.user
+    if (result) {
 
-      if (!displayName || !photoURL) {
-        throw new Error('Missing information from Google Account')
+      if (!result.name || !result.avatar) {
+        toast.error('Missing information from Google Account')
+        return
       }
 
       setUser({
-        id: uid,
-        name: displayName,
-        avatar: photoURL
+        id: result.id,
+        name:  result.name ?? "",
+        avatar:  result.avatar ?? ""
       })
     }
   }
