@@ -30,7 +30,7 @@ Foram implementados algumas funcionalidades extras e melhorias visuais no projet
 
  - [x] Incluir o ESlint e Prettier no projeto, para garantir uma padronização do código
  - [x] Toasts de avisos com [react-hot-toast](https://react-hot-toast.com/)
- - [] Modal para confirm com [react-modal](http://reactcommunity.org/react-modal/)
+ - [x] Modal para confirm com [react-modal](http://reactcommunity.org/react-modal/)
  - [] Recurso de ordenação de perguntas
  - [] Tela inicial com a lista de salas
  - 

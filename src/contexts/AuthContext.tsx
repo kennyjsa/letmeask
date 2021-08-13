@@ -1,31 +1,32 @@
-import { createContext, ReactNode, useEffect, useState } from "react"
-import toast from "react-hot-toast"
-import { auth } from "../services/firebase"
-import { firebaseAuthSignInWithGoogle } from "../services/firebaseAuthSignInWithGoogle"
-
+import React, { createContext, ReactNode, useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
+import { auth } from '../services/firebase'
+import { firebaseAuthSignInWithGoogle } from '../services/firebaseAuthSignInWithGoogle'
 
 type User = {
-  id: string,
-  name: string,
+  id: string
+  name: string
   avatar: string
 }
-type AuthContextType = {
-  user: User | undefined,
+
+export type AuthContextType = {
+  user: User | undefined
   signInWithGoogle: () => Promise<void>
 }
 
-type AuthContextProviderProps={
+type AuthContextProviderProps = {
   children: ReactNode
 }
 
 export const AuthContext = createContext({} as AuthContextType)
 
-
-export function AuthContextProvider(props: AuthContextProviderProps){
+export const AuthContextProvider: React.FC<AuthContextProviderProps> = (
+  props: AuthContextProviderProps
+) => {
   const [user, setUser] = useState<User>()
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         const { displayName, photoURL, uid } = user
 
@@ -42,22 +43,20 @@ export function AuthContextProvider(props: AuthContextProviderProps){
       }
     })
 
-    return ()=>{
+    return () => {
       unsubscribe()
     }
   }, [])
 
   async function signInWithGoogle() {
-    
-    const result = await firebaseAuthSignInWithGoogle();
+    const result = await firebaseAuthSignInWithGoogle()
 
     if (!result) {
-      toast.error("The user is not logged in")
+      toast.error('The user is not logged in')
       return
     }
 
     if (result) {
-
       if (!result.name || !result.avatar) {
         toast.error('Missing information from Google Account')
         return
@@ -65,8 +64,8 @@ export function AuthContextProvider(props: AuthContextProviderProps){
 
       setUser({
         id: result.id,
-        name:  result.name ?? "",
-        avatar:  result.avatar ?? ""
+        name: result.name ?? '',
+        avatar: result.avatar ?? ''
       })
     }
   }

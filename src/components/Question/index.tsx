@@ -1,8 +1,7 @@
-import { ReactNode } from 'react';
+import React from 'react'
 import cx from 'classnames'
 
-import './style.scss';
-
+import './style.scss'
 
 type QuestionProps = {
   content: string
@@ -10,24 +9,25 @@ type QuestionProps = {
     name: string
     avatar: string
   }
-  children?: ReactNode
+  children?: React.ReactNode
   isAnswered?: boolean
   isHighlighted?: boolean
 }
 
-export function Question({
+export const Question: React.FC<QuestionProps> = ({
   content,
   author,
   children,
   isAnswered = false,
   isHighlighted = false
-}: QuestionProps) {
+}) => {
   return (
     <div
-      className={cx('question', 
-          {'answered':isAnswered },
-          {'highlighted' : isHighlighted && !isAnswered}
-        )}
+      className={cx(
+        'question',
+        { answered: isAnswered },
+        { highlighted: isHighlighted && !isAnswered }
+      )}
     >
       <p>{content}</p>
       <footer>
@@ -35,11 +35,8 @@ export function Question({
           <img src={author.avatar} alt={author.name} />
           <span>{author.name}</span>
         </div>
-        <div>
-          {children}
-        </div>
+        <div>{children}</div>
       </footer>
     </div>
   )
-
 }

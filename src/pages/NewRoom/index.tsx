@@ -8,14 +8,14 @@ import { database } from '../../services/firebase'
 import illustrationImg from '../../assets/images/illustration.svg'
 import logoImg from '../../assets/images/logo.svg'
 
-import './style.scss';
+import './style.scss'
 
-export const NewRoom:React.FC = () => {
+export const NewRoom: React.FC = () => {
   const { user } = useAuth()
   const [newRoom, setNewRoom] = useState('')
   const history = useHistory()
 
-  async function handleCreateRoom (event: FormEvent) {
+  async function handleCreateRoom(event: FormEvent) {
     event.preventDefault()
 
     if (newRoom.trim() === '') {
@@ -35,7 +35,10 @@ export const NewRoom:React.FC = () => {
   return (
     <div id="page-new-room">
       <aside>
-        <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
+        <img
+          src={illustrationImg}
+          alt="Ilustração simbolizando perguntas e respostas"
+        />
         <strong>Crie salas de Q&amp;A ao-vivo</strong>
         <p>Aprenda e compartilhe conhecimento com outras pessoas</p>
       </aside>
@@ -43,9 +46,7 @@ export const NewRoom:React.FC = () => {
         <div className="main-content">
           <img src={logoImg} alt="Letmeask" />
           <h1>{user?.name}</h1>
-          <h2>
-            Crie uma nova sala
-          </h2>
+          <h2>Crie uma nova sala</h2>
           <form onSubmit={handleCreateRoom}>
             <input
               type="text"
@@ -61,7 +62,6 @@ export const NewRoom:React.FC = () => {
           </p>
         </div>
       </main>
-
     </div>
   )
 }

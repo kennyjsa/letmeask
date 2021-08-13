@@ -3,22 +3,20 @@ import { Toaster } from 'react-hot-toast'
 
 import { AuthContextProvider } from './contexts/AuthContext'
 
-import { Home } from "./pages/Home"
-import { NewRoom } from "./pages/NewRoom"
-import { Room } from './pages/Room';
-import { AdminRoom } from './pages/AdminRoom';
+import { Home } from './pages/Home'
+import { NewRoom } from './pages/NewRoom'
+import { Room } from './pages/Room'
+import { AdminRoom } from './pages/AdminRoom'
+import React from 'react'
 
-function App() {
+const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <Toaster
-        position="top-center"
-        reverseOrder={false}
-      />
+      <Toaster position="top-center" reverseOrder={false} />
       <AuthContextProvider>
         <Switch>
           <Route path="/" exact component={Home} />
-          
+
           <Route path="/rooms/new" exact component={NewRoom} />
           <Route path="/rooms/:id" component={Room} />
 
@@ -26,7 +24,7 @@ function App() {
         </Switch>
       </AuthContextProvider>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App

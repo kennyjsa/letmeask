@@ -1,19 +1,25 @@
-import { firebase, auth } from "./firebase";
+import { firebase, auth } from './firebase'
 
-export async function firebaseAuthSignInWithGoogle() {
-  const provider = new firebase.auth.GoogleAuthProvider();
+type User = {
+  id: string
+  name: string
+  avatar: string
+}
 
-  const result = await auth.signInWithPopup(provider);
+export async function firebaseAuthSignInWithGoogle(): Promise<User | null> {
+  const provider = new firebase.auth.GoogleAuthProvider()
+
+  const result = await auth.signInWithPopup(provider)
 
   if (!result.user) {
-    return null;
+    return null
   }
 
-  const { displayName, photoURL, uid } = result.user;
+  const { displayName, photoURL, uid } = result.user
 
   return {
     id: uid,
-    name: displayName,
-    avatar: photoURL,
-  };
+    name: displayName ?? '',
+    avatar: photoURL ?? ''
+  }
 }
