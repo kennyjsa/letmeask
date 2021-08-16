@@ -2190,6 +2190,13 @@
     "@types/history" "*"
     "@types/react" "*"
 
+"@types/react-svg-inline@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@types/react-svg-inline/-/react-svg-inline-2.1.2.tgz#8c5cb21fc6ae33b1667219efa4fbb4736cbc0048"
+  integrity sha512-TWchxhLRIFizRon5SrWdhDNBrmSQV4oRRt88AJPFdd+OxQhnRA3xbxvEQhuZ3NDYo9SJ/V9kWWORfnxFfvDGxA==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@^17.0.0":
   version "17.0.15"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.15.tgz#c7533dc38025677e312606502df7656a6ea626d0"
