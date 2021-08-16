@@ -2,13 +2,13 @@
   <img alt="Letmeask" src=".github/logo.svg" width="160px">
 </p>
 
-<p align="center">
+<!-- <p align="center">
   <img src="https://img.shields.io/static/v1?label=NLW&message=06&color=8257E5&labelColor=000000" alt="NLW Together 06" />
   
   <img src="https://img.shields.io/github/stars/rocketseat-education/nlw-06-reactjs?label=stars&message=MIT&color=8257E5&labelColor=000000" alt="Stars">
 
   <img  src="https://img.shields.io/static/v1?label=license&message=MIT&color=8257E5&labelColor=000000" alt="License">   
-</p>
+</p> -->
 
 <h1 align="center">
     <img alt="Letmeask" src=".github/cover.svg" />
@@ -46,8 +46,8 @@ Foram implementados algumas funcionalidades extras e melhorias visuais no projet
 Clone o projeto e acesse a pasta do mesmo.
 
 ```bash
-$ git clone https://github.com/rocketseat-education/nlw-06-reactjs
-$ cd nlw-06-reactjs
+$ git clone https://github.com/kennyjsa/letmeask.git
+$ cd letmeask
 ```
 
 Para iniciá-lo, siga os passos abaixo:
@@ -65,8 +65,6 @@ Lembrando que será necessário criar uma conta no [Firebase](https://firebase.g
 ## 💻 Projeto
 
 Letmeask é perfeito para criadores de conteúdos poderem criar salas de Q&A com o seu público, de uma forma muito organizada e democrática. 
-
-Este é um projeto desenvolvido durante a **[Next Level Week Together](https://nextlevelweek.com/)**, apresentada dos dias 20 a 27 de Junho de 2021.
 
 
 ## 🔖 Layout
