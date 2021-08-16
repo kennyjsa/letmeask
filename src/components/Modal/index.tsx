@@ -11,6 +11,8 @@ type ModalProps = {
   children?: React.ReactNode
 }
 
+ReactModal.setAppElement('#root')
+
 export const Modal: React.FC<ModalProps> = ({
   isOpen,
   onAfterOpen,
@@ -26,6 +28,7 @@ export const Modal: React.FC<ModalProps> = ({
       contentLabel={title}
       className="modal"
       overlayClassName="modal-overlay"
+      closeTimeoutMS={500}
     >
       <div className="modal-title">{title}</div>
       {children}

@@ -11,11 +11,12 @@ import { database } from '../../services/firebase'
 import logoImg from '../../assets/images/logo.svg'
 import checkImg from '../../assets/images/check.svg'
 import answerImg from '../../assets/images/answer.svg'
-import deleteImg from '../../assets/images/delete.svg'
+import { ReactComponent as DeleteImg } from '../../assets/images/delete.svg'
 
 import './style.scss'
 import { EmptyBox } from '../../components/EmptyBox'
 import { RoomTitle } from '../../components/RoomTitle'
+import { useConfirm } from '../../hooks/useConfirm'
 
 type RoomParams = {
   id: string
@@ -53,9 +54,20 @@ export const AdminRoom: React.FC = () => {
       isHighlighted: !isHighlighted
     })
   }
+  const { confirm } = useConfirm()
 
   async function handleDeleteQuestion(questionID: string) {
-    if (!window.confirm('Tem certeza que você deseja excluir esta pergunta?')) {
+    const result = await confirm({
+      icon: <DeleteImg />,
+      title: 'Excluir pergunta',
+      message: 'Tem certeza que você deseja excluir esta pergunta?',
+      okText: 'Sim, excluir',
+      cancelText: 'Não'
+    })
+
+    console.log(result)
+
+    if (!result) {
       return
     }
 
@@ -127,7 +139,7 @@ export const AdminRoom: React.FC = () => {
                   type="button"
                   onClick={() => handleDeleteQuestion(question.id)}
                 >
-                  <img src={deleteImg} alt="Remover pergunta" />
+                  <DeleteImg />
                 </button>
               </Question>
             ))}
