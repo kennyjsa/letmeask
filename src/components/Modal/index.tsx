@@ -1,29 +1,31 @@
-import { ReactNode } from 'react'
+import React from 'react'
 import ReactModal from 'react-modal'
 
 import './style.scss'
 
 type ModalProps = {
   isOpen: boolean
-  onAfterOpen: () => void
-  onRequestClose: () => void
-  title: string
-  children?: ReactNode
+  onAfterOpen?: () => void
+  onRequestClose?: () => void
+  title?: string
+  children?: React.ReactNode
 }
 
-export function Modal({
+export const Modal: React.FC<ModalProps> = ({
   isOpen,
   onAfterOpen,
   onRequestClose,
   title,
   children
-}: ModalProps) {
+}: ModalProps) => {
   return (
     <ReactModal
       isOpen={isOpen}
       onAfterOpen={onAfterOpen}
       onRequestClose={onRequestClose}
       contentLabel={title}
+      className="modal"
+      overlayClassName="modal-overlay"
     >
       <div className="modal-title">{title}</div>
       {children}
